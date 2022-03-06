@@ -1,0 +1,36 @@
+<div class="blurBackground"></div>
+
+<div class="container">
+    <h3 style="margin-bottom: 5%;">Register Yourself</h3>
+{{!-- register form starts from here --}}
+    {{#if emptyStatus}}
+        <div class="d-inline-flex p-1 bg-danger text-white" style="margin: -1% 0 0 37%">All fields are necessary</div>
+    {{/if}}
+    <form action="/register" method="post">
+        {{!-- name input --}}
+        <div class="form-group">
+        <strong><label for="registerName">Enter Name</label></strong>
+        <input type="text" name="name" id="registerName" class="form-control">
+        </div>
+        {{!-- number input --}}
+        <div class="form-group">
+        <strong><label for="registerNumber">Enter Number</label></strong>
+        <input type="text" name="number" id="registerNumber" class="form-control">
+        </div>
+        {{!-- password input --}}
+        <div class="form-group">
+        <strong><label for="password">Enter Password</label></strong>
+        <input type="password" name="password" id="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a href="../login"><button type="button" class="btn btn-info" style="margin-left: 10%;">Login</button></a>
+        <span style="color: #4e7322;">If already register</span>
+    </form>
+</div>
+
+
+{{!-- <ul>
+    {{#each userData as |value key|}}
+        <li> {{ name }} </li>
+    {{/each}}
+</ul> --}}

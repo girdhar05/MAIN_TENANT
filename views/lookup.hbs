@@ -1,0 +1,55 @@
+<div id="map"></div>
+<script>
+    var map;
+    function initMap() {
+       map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 21.339408, lng: 78.9629},
+            zoom: 5
+        });
+            
+
+        {{#if uploadTimeLoad}}
+            var msg = `<div>
+                        <div style="font-weight: bold; font-size: large;"><b>Problem Info</b></div> <hr>
+                        <div><b>Problem Type:</b> {{problemType}}</div><hr>
+                        <div><b>Latitiude: </b> {{lat}} <br> <b>longitude: </b> {{lng}}</div> <hr>
+                        <div>Problem Image: </div><br>
+                        <div><img src="{{problemImage}}" alt="problemImage" style="width: 128px; height: 128px;"> </div>
+                    </div>`;
+
+            var infowindow = new google.maps.InfoWindow({
+            content: msg
+            });
+            var marker = new google.maps.Marker({position:{lat: {{lat}}, lng: {{lng}} } , map: map, title: 'problem'});
+            marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            });
+        {{else}}
+            var markers = [];
+            var infowindow = [];
+            var marker;
+            {{#each point as |val key|}}
+                {{#with val}}
+                    var msg = `<div>
+                        <div style="font-weight: bold; font-size: large;"><b>Problem Info</b></div> <hr>
+                        <div><b>Problem Type:</b> {{problemType}}</div><hr>
+                        <div><b>Latitiude: </b> {{lat}} <br> <b>longitude: </b> {{lng}}</div> <hr>
+                        <div>Problem Image: </div><br>
+                        <div><img src="{{problemImage}}" alt="problemImage" style="width: 128px; height: 128px;"> </div>
+                    </div>`;
+
+                    infowindow[{{key}}] = new google.maps.InfoWindow({
+                    content: msg
+                    });
+                    marker = new google.maps.Marker({position:{lat: {{lat}}, lng: {{lng}} } , title: 'problem'});
+                    markers.push(marker);
+                    markers[{{key}}].setMap(map);
+                    markers[{{key}}].addListener('click', function() {
+                    infowindow[{{key}}].open(map, markers[{{key}}]);
+                    });
+                {{/with}}
+            {{/each}}
+        {{/if}}
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8aYtq2NCPoSax5auhejynI7qTKumvUAk&callback=initMap" async defer></script>

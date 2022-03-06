@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: serif;
+}
+
+html, body {
+  width: 100%;
+}
+
+.flex-login {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 5%;
+  left: 85%;
+}
+
+.flex-login > div {
+  margin-left: 4%;
+}
+
+.container-fluid {
+  position: relative;
+}
+
+.img-cont{
+  background-image: url('/images/map.png');
+  height: 40rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  box-sizing: border-box;
+}
+
+.mainBtn {
+  position: absolute;
+  left: 43%;
+  top: 43%;
+}
+
+.prblm-btn {
+  padding: 20px;
+  min-width: 100%;
+  font-size: 20px;
+  border-radius: 6%;
+  background-color: #10bbff;
+  border: none;
+  outline: none;
+  box-shadow: 8px 7px 13px #212f29;
+  font-family: serif;
+  color: whitesmoke;
+}
+
+.prblm-btn:hover {
+  cursor: pointer;
+  background-color: #309eca;
+}
+
+.login-btns {
+  background-color: #0a95ce;
+  border: none;
+  font-size: 20px;
+}
+
+.login-btns:focus {
+  box-shadow: none;
+}
+
+.close:hover {
+  outline: none;
+}
+
+.done {
+  position: absolute;
+  bottom: 5%;
+  left: 7%;
+}
+
+.done:hover {
+  cursor: pointer;
+}
